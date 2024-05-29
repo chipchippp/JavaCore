@@ -52,7 +52,7 @@ public class Main {
 
         int toBoxing = 54;
 //        Boxing là quá trình chuyển đổi primitive data type thành object data type tương ứng. Ví dụ
-        Integer beingBoxed= Integer.valueOf(toBoxing);
+        Integer beingBoxed = Integer.valueOf(toBoxing);
 //        Unboxing là quá trình chuyển đổi object data type thành primitive data type tương ứng. ví dụ:
         int unboxing = beingBoxed.intValue();
 
@@ -73,7 +73,7 @@ public class Main {
 //        it is not possible to directly compare primitive data type and ob data type in java
 
 //        so sánh kiểu dữ liệu nguyên thủy: khi so sánh kiểu dữ liệu nguyên thủy và kiểu dữ liệu đối tượng in java.
-//        comparison of  primitive data type: when comparing primitive data type and ob data type in java.
+//        comparison of primitive data type: when comparing primitive data type and ob data type in java.
 //        U can use các toán tử so sánh như ==, >, <, <=, >=. Example:
 //        U can use comparison operators like ==, >, <, <=, >=. Example:
 
@@ -88,7 +88,7 @@ public class Main {
 //        comparison of primitive data type: when comparing two object, you need to use a method .equal().
 //        điều này bởi vì khi bạn sử dụng toán tử == với đối tượng
 //        this is cause when you use the == operator with object
-//        bạn đang so sánh xem hai tham chiếu có trỏ đến cùng môột đối tượng hay không.
+//        bạn đang so sánh xem hai tham chiếu có trỏ đến cùng một đối tượng hay không.
 //        u comparing whether two references point to the same object.
         String str1 = new String("hello");
         String str2 = new String("hello");
@@ -126,7 +126,7 @@ public class Main {
 //        Khi khởi tạo biến với 2 loại data types này in java, values mặc định sẽ khác nhau:
 //        When initializing variables with these two data types in java, the default values will be different:
 //        primitive type: when u initialize a primitive data type variables mà kh gán (without assignment)
-        // giá trị, nó sẽ được gán một giá trị mặc định tùy thuộc vào kiểu dữ liệu:
+//        giá trị, nó sẽ được gán một giá trị mặc định tùy thuộc vào kiểu dữ liệu:
 //        values, it will be assigned a default values depending on the data types
         //byte, short, int, long: 0
         //float, double: 0.0
