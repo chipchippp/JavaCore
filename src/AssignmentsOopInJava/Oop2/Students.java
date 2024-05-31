@@ -67,9 +67,7 @@ public class Students {
 
     @Override
     public String toString() {
-        String result = String.format("%-20d%-20s%-20f%-20d%", maStudent, name, diemLT, diemTH);
-
-        return result;
+        return String.format("%-20d%-20s%-20.2f%-20.2f%-20.2f", maStudent, name, diemLT, diemTH, tinhDiemTB());
 //                "maStudent = " + getMaStudent() + '\n' +
 //                " name = " + getName() + '\n' +
 //                " diemLT = " + getDiemLT() +

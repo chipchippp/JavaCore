@@ -6,7 +6,9 @@ public class Main {
         Students st2 = new Students(2, "nvb", 4.9, 6.5);
         Students st3 = new Students();
         st3.nhapData();
-        System.out.println("%-20d%-20s%-20f%-20d%", "ma", "name", "Ly", "a");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s\n", "Ma", "Name", "LT", "TH", "TB");
         System.out.println(st1.toString());
+        System.out.println(st2.toString());
+        System.out.println(st3.toString());
     }
 }
