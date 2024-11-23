@@ -35,7 +35,6 @@ public class Main {
 //        System.out.printf("Pi after assign 3,14 to 3 int: ");
 //        System.out.println(pi);
 
-
 //        Kiểu dữ liệu Object
         String str = "Hello world";
         Integer integer = Integer.valueOf(7);

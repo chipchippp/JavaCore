@@ -3,23 +3,90 @@ package StringMain;
 public class Main {
     public static void main(String[] args) {
 //        Tìm hiểu về đặc điểm và tính chất của String in java
-//        in Java, String là 1 lớp đặc biệt and có một ố đặc điểm and tính chất quan trọng
-//        Bất biến (Immutable) : Một khi String đc tạo ra, nó kh thể thay đổi. Mỗi thao tác thay đổi nội dung.
-//        của String sẽ tạo ra một ob String mới
-//        String pool: 1 khu vực bộ nhớ đặc biệt được gọi là "String pool" đc use lưu trữ
-//        All object String đc tạo thông qua phép gán trực tiếp (ví dụ: String str = "hello")
-//        if 1 String mới đc tạo and nó đã tồn tại trong String pool, thì tham chiếu
-//        đến String đã tồn tại sẽ đc trả về thay vì tạo ra new ob.
+//        in Java, String là 1 lớp đặc biệt and có một số đặc điểm and tính chất quan trọng
+
+//        Bất biến (Immutable) : Một khi String đc tạo ra, nó kh thể thay đổi.
+//        Nếu bạn thay đổi một String, Java sẽ tạo một đối tượng mới, thay vì chỉnh sửa đối tượng hiện có.
+//        Example:
+          String str = "hello";
+          str = str + "world";  // Nếu muốn thay đổi nội dung của 1 String, bạn sẽ tạo ra 1 ob mới chứa nội dung mới
+          System.out.println(str); // tạo ra 1 ob mới chứa "hello world"
+
+//        String pool: Khu vực bộ nhớ đặc biệt trong Heap dùng để lưu trữ String được tạo bằng phép gán trực tiếp.
+//        Nếu một String mới được tạo và nó đã tồn tại trong String Pool,
+//        thì tham chiếu đến String đã tồn tại sẽ được trả về thay vì tạo một đối tượng mới.
+
 //        compare: để ss nội dung của 2 String, u nên to use the method .equal() thay vì operator (toán tử) ==.
 //        operator == sẽ ss tham chiếu, không phải nội dung.
+////        Example:
+//        String str1 = new String("hello");
+//        String str2 = new String("hello");
+//        if (str1.equals(str2)){
+//            System.out.println("Object equal");
+//        } else {
+//            System.out.println("Object not equal");
+//        } // In ra "Object equal" vì nội dung của 2 chuỗi là giống nhau
+
 //        Nối Chuỗi: u can nối các String lại với nhau = toán tử +. However, do tính chất bất biến của String,
 //        mỗi thao tác sẽ tạo ra một ob String mới. Điều này có thể dẫn đén hiệu suất kém
 //        if u thực hiện nhiều thao tác nối trong 1 vòng lặp. Trong trường hợp đó, user StringBuilder or StringBuffer là 1 lựa chọn tốt.
-//        method hữu ích: Lớp String cc nhiều phương thức hữu ích như lenth, charAt(int index),
-//        substring(int beginIndex, int endIndex), split(String regex), trim(), toLowerCase(), toUpperCase(),
-//        replace(oldChar, newChar), startsWith(String prefix), endsWith(String suffix), contains(CharSequence s),
+//        Phương thức hữu ích:
+//        length(), charAt(), substring(), split(), trim(), toLowerCase(), toUpperCase(), replace(), startsWith(), endsWith(), contains().
 
+//        Khi nào nên dùng StringBuilder hoặc StringBuffer thay cho String
+//        1. Khi thực hiện nhiều thao tác chỉnh sửa trên chuỗi:
+//        String là immutable (bất biến), nghĩa là mỗi lần chỉnh sửa, Java sẽ tạo một đối tượng mới.
+//        Điều này làm tiêu tốn bộ nhớ và giảm hiệu suất nếu bạn thực hiện nhiều thao tác trên chuỗi (ví dụ: nối, xóa, thay thế).
+//        2. Sự khác biệt giữa StringBuilder và StringBuffer:
+//        StringBuilder:
+//        Nhanh hơn.
+//        Không an toàn trong môi trường đa luồng (không đồng bộ hóa).
+//        StringBuffer:
+//        Chậm hơn một chút so với StringBuilder.
+//                An toàn trong môi trường đa luồng (có đồng bộ hóa).
+//        3. Khi nào nên dùng:
+//        Dùng StringBuilder: Nếu chương trình của bạn chỉ chạy trên một luồng (single-threaded).
+//                Dùng StringBuffer: Nếu chương trình của bạn chạy trong môi trường đa luồng (multi-threaded) và cần đảm bảo tính toàn vẹn dữ liệu.
+//        Example:
+        String result = "";
+        for (int i = 0; i < 5; i++) {
+            result += "Hello "; // Mỗi lần nối tạo một đối tượng String mới.
+        }
+        System.out.println(result); // In ra "Hello Hello Hello Hello Hello"
+//        Example:
+        StringBuilder result1 = new StringBuilder();
+        for (int i = 0; i < 5; i++) {
+            result1.append("Hello "); // Không tạo đối tượng mới, chỉ thay đổi nội dung.
+        }
+        System.out.println(result1.toString()); // In ra "Hello Hello Hello Hello Hello"
 
+//        Example:
+        StringBuffer result2 = new StringBuffer();
+
+        Thread thread1 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                result2.append("Thread1 ");
+            }
+        });
+
+        Thread thread2 = new Thread(() -> {
+            for (int i = 0; i < 5; i++) {
+                result2.append("Thread2 ");
+            }
+        });
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(result2.toString());
+//        In ra "Thread1 Thread1 Thread1 Thread1 Thread1 Thread2 Thread2 Thread2 Thread2 Thread2 "
 
 //        Có bao nhiêu cách để tạo biến String?
 //        Có 3 cách chính để tạo 1 biến String in java
@@ -30,13 +97,13 @@ public class Main {
 //        2. use từ khóa new: khi bạn tạo 1 String bằng cách này, java sẽ luôn tạo 1 đối tượng String mới,
 //        ngay cả khi 1 String giống hệt đã tồn tại trong String pool.
         String strNotStringPool = new String("hello");
-//        3. use the method format: Method format cuar lopws String cho phép bạn tạo 1 String mới với định dạng cụ thể. Điều này rất
+//        3. use the method format: Method format của lớp String cho phép bạn tạo 1 String mới với định dạng cụ thể. Điều này rất
 //        hữu ích khi bạn cần tạo String phức tạp từ nhiều giá trị khác nhau.
         String strFormat = String.format("Hello, %$", "world");
 //        Lưu ý: rằng 2 cách thứ 2 sẽ kh tận dụng đc String pool, điều này có thể dẫn đến việc sử dụng bộ nhớ
 //        kh hiệu quả nếu bạn tạo nhiều String giống nhau.
 
-//        tìm hiêểu về String pool?
+//        tìm hiểu về String pool?
 //        String pool, còn đc gọi là Constant String pool, là 1 khu vực bộ nớ đặc biệt trong Heap Memory đc sd để
 //        lưu trữ all các ob String đc tọa thông qua phép gán trực tiếp.
 //        ( ví dụ: String str = "hello" ). Một số điểm quan trọng về String pool:
