@@ -15,7 +15,10 @@ public class Main {
 //        String pool: Khu vực bộ nhớ đặc biệt trong Heap dùng để lưu trữ String được tạo bằng phép gán trực tiếp.
 //        Nếu một String mới được tạo và nó đã tồn tại trong String Pool,
 //        thì tham chiếu đến String đã tồn tại sẽ được trả về thay vì tạo một đối tượng mới.
-
+//        Example:
+        String str1 = "hello";
+        String str2 = "hello";
+        System.out.println(str1 == str2); // In ra "true" vì cả 2 tham chiếu đều trỏ đến cùng 1 ob trong String pool
 //        compare: để ss nội dung của 2 String, u nên to use the method .equal() thay vì operator (toán tử) ==.
 //        operator == sẽ ss tham chiếu, không phải nội dung.
 ////        Example:
@@ -128,14 +131,14 @@ public class Main {
 //        method equal sẽ ss 2 chuỗi dựa trên nd và phân biệt chữ hoa thường.
 //        method equalsIgnoreCase sẽ ss nd mà kh phân biệt chữ hoa thường.
 //        Example:
-        String str1 = "hello";
-        String str2 = "Hello";
-        String str3 = "hello";
+//        String str1 = "hello";
+//        String str2 = "Hello";
+//        String str3 = "hello";
 //        equals
-        System.out.println(str1.equals(str2)); // output: false vì equals phân biệt hoa thường
-        System.out.println(str1.equals(str3)); // output: true
-//        equalsIgnoreCase
-        System.out.println(str1.equalsIgnoreCase(str2)); // In ra "true" vì .equalsIgnoreCase() không phân biệt chữ hoa chữ thường
-        System.out.println(str1.equalsIgnoreCase(str3)); // In ra "true"
+//        System.out.println(str1.equals(str2)); // output: false vì equals phân biệt hoa thường
+//        System.out.println(str1.equals(str3)); // output: true
+////        equalsIgnoreCase
+//        System.out.println(str1.equalsIgnoreCase(str2)); // In ra "true" vì .equalsIgnoreCase() không phân biệt chữ hoa chữ thường
+//        System.out.println(str1.equalsIgnoreCase(str3)); // In ra "true"
     }
 }
