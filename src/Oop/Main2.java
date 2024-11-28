@@ -27,43 +27,34 @@ public class Main2 {
         myCar.drive(myCar.brand);
         System.out.println(myCar.brand);
 
-        class Animal{
-            public void sound(){
-                System.out.println("I'm an animal");
-            }
-        }
-
-//        Override
-//        Overriding xảy ra khi lớp con cung cấp cài đặt cụ thể cho phương thức đã định nghĩa trong lớp cha.
-//                Phương thức ở lớp con phải có cùng tên, cùng kiểu trả về, và cùng danh sách tham số với phương thức ở lớp cha.
-//                Overriding được sử dụng để cung cấp hành vi của phương thức từ lớp cha.
-
-        class Dog extends Animal{
-            @Override
-            public void sound(){
-                System.out.println("I'm a dog");
-            }
-        }
-
+//        class Animal{
+//            public void sound(){
+//                System.out.println("I'm an animal");
+//            }
+//        }
+////        Override
+//        class Dog extends Animal{
+//            @Override
+//            public void sound(){
+//                System.out.println("I'm a dog");
+//            }
+//        }
 //        Overloading
-//        Overloading xảy ra khi nhiều phương thức trong cùng một lớp có cùng tên nhưng khác số lượng hoặc kiểu tham số.
-//        Mục đích: Định nghĩa nhiều cách thực hiện một hành động dựa trên tham số truyền vào
-        class Cat{
-            public void sound(){
-                System.out.println("I'm a meow");
+        class MathOperations {
+            int add(int a, int b) {
+                return a + b;
+            }
+            double add(double a, double b) {
+                return a + b;
+            }
+            int add(int a, int b, int c) {
+                return a + b + c;
             }
         }
-        Cat myCat = new Cat();
-        myCat.sound();
-        Dog myDog = new Dog();
-        myDog.sound();
 
-//          Một function có access modifier là private hoặc static có thể overriding không?
-//          Không, một phương thức có access modifier là `private` hoặc `static` không thể được ghi đè (overriding) trong Java.
-//
-//          Vì phương thức private không thể truy cập được trong lớp con.
-//          Nếu định nghĩa một phương thức static trong lớp con, đó là method hiding chứ không phải method overriding.
 
+//          Một function có access modifier là private hoặc static có thể overriding không
+//          Một phương thức final có thể kế thừa được  không ? ///////////////////////////////////////
         class ParentClass{
             private void privateMethod(){
                 System.out.println("This is a private method from ParentClass");
@@ -71,40 +62,27 @@ public class Main2 {
             static void staticMethod(){
                 System.out.println("This is a static method from ParentClass");
             }
+            final void finalMethod(){
+                System.out.println("This is a final method from ParentClass");
+            }
         }
-
         class ChildClass extends ParentClass{
 //            @Override
 //            private void privateMethod(){
 //                System.out.println("Trying to override a private method.");
 //            }
-//
 //            @Override
 //            static void staticMethod(){
 //                System.out.println("Trying to override a static method.");
 //            }
-        }
-        //Trong ví dụ trên, `privateMethod` và `staticMethod` trong `ParentClass` không thể được ghi đè trong `ChildClass`.
-
-        //////////////////- Một phương thức final có thể kế thừa được  không ? ///////////////////////////////////////
-        //Có, một phương thức `final` có thể được kế thừa trong Java. Tuy nhiên, bạn không thể ghi đè (overriding) một phương thức `final` trong lớp con.
-        //
-        //Khi bạn đánh dấu một phương thức là `final`, bạn đang nói với Java rằng phương thức đó không thể được thay đổi nữa,
-        // nghĩa là không có lớp con nào có thể ghi đè phương thức đó.
-
-        //Dưới đây là một ví dụ minh họa:
-        class ParentClass2 {
-            public final void finalMethod(){
-                System.out.println("This is a final method from ParentClass2");
-            }
-        }
-
-        class ChildClass2 extends ParentClass2{
 //            @Override
 //            public void finalMethod(){
 //                System.out.println("Trying to override a final method.");
 //            }
-        }
+        }// `privateMethod` và `staticMethod` trong `ParentClass` không thể được ghi đè trong `ChildClass`.
+        ChildClass child = new ChildClass();
+        child.finalMethod(); // Gọi phương thức finalMethod() được kế thừa từ ParentClass
+
 
         //Trong ví dụ trên, `finalMethod` trong `ParentClass` được đánh dấu là `final`, nên không thể ghi đè trong `ChildClass`.
         // Nếu bạn cố gắng ghi đè phương thức `final`, trình biên dịch Java sẽ báo lỗi.
@@ -113,39 +91,45 @@ public class Main2 {
         //Trong Java, `this` và `super` là hai từ khóa quan trọng:
         //
         //1. `this`: Từ khóa `this` được sử dụng để tham chiếu đến đối tượng hiện tại, nghĩa là nó trỏ đến instance của lớp hiện tại. `this` có thể được sử dụng để:
-        //
         //   - Tham chiếu đến thuộc tính của lớp hiện tại.
         //   - Gọi phương thức của lớp hiện tại.
         //   - Gọi constructor của lớp hiện tại.
-        //Ví dụ về sử dụng `this`:
 
         //2. `super`: Từ khóa `super` được sử dụng để tham chiếu đến đối tượng của lớp cha. `super` có thể được sử dụng để:
-        //
         //   - Tham chiếu đến thuộc tính của lớp cha.
         //   - Gọi phương thức của lớp cha.
         //   - Gọi constructor của lớp cha.
-        //
+
+        //Ví dụ về sử dụng `this`:
         //Ví dụ về sử dụng `super`:
-
-        class ParentClassHaveSuper {
-            private int x;
-            public ParentClassHaveSuper(int x){}
+        class Animal {
+            private String name;
+            public Animal(String name) {
+                this.name = name; // 'this.name' tham chiếu đến biến instance 'name'
+            }// Constructor của Animal sử dụng 'this' để tham chiếu đến biến instance
+            void makeSound() {
+                System.out.println(this.name + " makes a generic animal sound.");
+            } // Phương thức makeSound sử dụng 'this.name' để truy cập biến instance
         }
+        class Dog extends Animal {
+            private String breed;
+            public Dog(String name, String breed) {
+                super(name); // Gọi constructor của Animal
+                this.breed = breed;}
+            @Override
+            public void makeSound() {
+                super.makeSound(); // Gọi phương thức makeSound() của lớp cha Animal
+                System.out.println("Woof woof!");
+            }// Phương thức makeSound của Dog ghi đè phương thức của lớp cha
+            public void introduce() {
+                System.out.println("This dog's breed is: " + this.breed); // 'this' truy cập thuộc tính breed của Dog
+                super.makeSound();}// Phương thức giới thiệu về Dog, sử dụng cả 'this' và 'super'
+        }Dog myDog = new Dog("Buddy", "Golden Retriever");
+        myDog.introduce(); // Gọi phương thức introduce() để thấy sự khác biệt giữa 'this' và 'super'
+        myDog.makeSound();
 
-        class ChildClassHaveSuper extends ParentClassHaveSuper{
-            private int y;
-            public ChildClassHaveSuper(int x, int y) {
-                super(x);
-                this.y = y;
-//                This tham chiếu đến thuộc tính 'y' của lớp hiện tại
 
-            }
-            public void printX(){
-                System.out.println(super.x); // 'super' tham chiếu đến thuộc tính 'x' của lớp cha
-            }
 
-            //Trong ví dụ trên, `ChildClass` kế thừa từ `ParentClass`. Khi tạo một instance của `ChildClass`,
-            // nó sử dụng từ khóa `super` để gọi constructor của `ParentClass` và thiết lập giá trị cho thuộc tính `x` của `ParentClass`.
-        }
+
     }
 }

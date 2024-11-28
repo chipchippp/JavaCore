@@ -226,5 +226,29 @@ public class Main {
         //
         //Trong ví dụ trên, `ChildClass` kế thừa từ `ParentClass`. Khi tạo một instance của `ChildClass`,
         // nó sử dụng từ khóa `super` để gọi constructor của `ParentClass` và thiết lập giá trị cho thuộc tính `x` của `ParentClass`.
+
+        // Call another Constructor
+        class ThisKeywordOne{
+            private int x;
+            public ThisKeywordOne(){
+                this(10);
+            }
+            public ThisKeywordOne(int x){}
+//            public getPoiner(ThisKeywordTwo pointer) {
+//                return this;
+//            }
+        }
+
+        // Pass a Pointer ( reference ) back to the current object
+        class ThisKeywordTwo {
+            private ThisKeywordOne anotherObject = new ThisKeywordOne();
+            public static void main(String[] args) {
+                ThisKeywordTwo anObject = new ThisKeywordTwo();
+                anObject.passPointer();
+            }
+            public void passPointer() {
+//                anotherObject.someMethod(this);
+            }
+        }
     }
 }
