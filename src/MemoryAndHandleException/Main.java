@@ -18,11 +18,11 @@ public class Main {
         }
 
         // Gọi throwMethod với giá trị không hợp lệ
-//        try {
-//            throwMethod(-5);
-//        } catch (IllegalArgumentException e) {
-//            System.out.println("Exception from throwMethod: " + e.getMessage());
-//        }
+        try {
+            throwMethod(-5);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception from throwMethod: " + e.getMessage());
+        }
 
         // Gọi phương thức với custom exception
 //        try {
@@ -30,6 +30,11 @@ public class Main {
 //        } catch (MyCustomException e) {
 //            System.out.println("Custom exception: " + e.getMessage());
 //        }
+    }
+
+    public class Example {
+        static int staticVariable = 10; // Biến toàn cục, Cấp phát tĩnh
+        final int constant = 20; // Hằng số cũng được cấp phát tĩnh
     }
 
     public static void throwMethod(int x) {
