@@ -5,7 +5,29 @@ public class Main {
     public final void myFinalMethod() {
         // ...
     }
+    final int myFinalVariable; // Biến final, không phải static
+
+    // Constructor
+    Main(int value) {
+        this.myFinalVariable = value; // Gán giá trị một lần trong constructor
+    }
+
+    static int myStaticVariable = 0; // Biến static, chung cho tất cả các đối tượng
     public static void main(String[] args) {
+
+        Main obj1 = new Main(10);
+        Main obj2 = new Main(20);
+
+        System.out.println("Obj1: " + obj1.myFinalVariable); // In ra 10
+        System.out.println("Obj2: " + obj2.myFinalVariable); // In ra 20
+
+//        Main obj3 = new Main();
+//        Main obj4 = new Main();
+
+//        obj3.myStaticVariable = 10; // Thay đổi từ obj3
+//        System.out.println("obj3: " + obj3.myStaticVariable); // In ra 10
+//        System.out.println("obj4: " + obj4.myStaticVariable); // Cũng in ra 10 (dùng chung biến)
+
         int sum = MathUtils.add(10, 20);
         int difference = MathUtils.subtract(20, 10);
         System.out.println(sum); // 30
