@@ -9,6 +9,7 @@ public class TreeSetExample {
         treeSet.add(3);
         treeSet.add(1);
         treeSet.add(2);
+//        treeSet.add(null); //  không cho phép phần tử null
 
         System.out.println(treeSet); // [1, 2, 3] (đã sắp xếp)
         treeSet.remove(2);
