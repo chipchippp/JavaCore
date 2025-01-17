@@ -62,30 +62,36 @@ public class Main {
 //            System.out.println(i);
 //        }
 
-        User user = new User();
-        user.setId(1);
-        user.setFirstName("John");
-        user.setLastName("Doe");
+//        User user = new User();
+//        user.setId(1);
+//        user.setFirstName("John");
+//        user.setLastName("Doe");
+//
+//        List<User.Address> addresses = new ArrayList<>();
+//        User.Address address1 = new User.Address();
+//        address1.setCity("Hanoi");
+//        address1.setCountry("Vietnam");
+//        address1.setStreet("123");
+//        addresses.add(address1);
+//
+//        User.Address address2 = new User.Address();
+//        address2.setCity("Saigon");
+//        address2.setCountry("Vietnam");
+//        address2.setStreet("123");
+//        addresses.add(address2);
+//
+//        user.setAddress(addresses);
+//
+//        User user1 = new User(1, "John", "Doe", null);
+//
+//        System.out.println(user);
+//        System.out.println("=========");
+//        System.out.println(user1);
 
-        List<User.Address> addresses = new ArrayList<>();
-        User.Address address1 = new User.Address();
-        address1.setCity("Hanoi");
-        address1.setCountry("Vietnam");
-        address1.setStreet("123");
-        addresses.add(address1);
+        Employee employee = new Employee();
+        employee.setId(1);
+        employee.setFirstName("John");
 
-        User.Address address2 = new User.Address();
-        address2.setCity("Saigon");
-        address2.setCountry("Vietnam");
-        address2.setStreet("123");
-        addresses.add(address2);
-
-        user.setAddress(addresses);
-
-        User user1 = new User(1, "John", "Doe", null);
-
-        System.out.println(user);
-        System.out.println("=========");
-        System.out.println(user1);
+        System.out.println(employee.toString());
     }
 }
