@@ -55,13 +55,37 @@ public class Main {
 //        }
 
         // continue
-        for (int i = 0; i < 10; i++){
-            if (i == 5){
-                continue;
-            }
-            System.out.println(i);
-        }
+//        for (int i = 0; i < 10; i++){
+//            if (i == 5){
+//                continue;
+//            }
+//            System.out.println(i);
+//        }
 
+        User user = new User();
+        user.setId(1);
+        user.setFirstName("John");
+        user.setLastName("Doe");
 
+        List<User.Address> addresses = new ArrayList<>();
+        User.Address address1 = new User.Address();
+        address1.setCity("Hanoi");
+        address1.setCountry("Vietnam");
+        address1.setStreet("123");
+        addresses.add(address1);
+
+        User.Address address2 = new User.Address();
+        address2.setCity("Saigon");
+        address2.setCountry("Vietnam");
+        address2.setStreet("123");
+        addresses.add(address2);
+
+        user.setAddress(addresses);
+
+        User user1 = new User(1, "John", "Doe", null);
+
+        System.out.println(user);
+        System.out.println("=========");
+        System.out.println(user1);
     }
 }
