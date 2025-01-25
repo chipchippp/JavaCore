@@ -1,6 +1,8 @@
-package JavaCollection;
+package JavaCollection.HastSet;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 public class HastSetDemo {
     public static void main(String[] args) {
@@ -16,6 +18,10 @@ public class HastSetDemo {
 
         System.out.println(hashSet); // [Java, Python, C++]
 
+//        HashSetToArrayListExample
+        List<String> list = new ArrayList<>(hashSet);
+        System.out.println("ArrayList: " + list);
+
         // Thử thêm phần tử null
         hashSet.add(null);
 
@@ -27,6 +33,7 @@ public class HastSetDemo {
         hashSet.remove("Java");
         System.out.println("HashSet sau khi xóa 'Java': " + hashSet); // [null, Python, C++]
 
+        // Duyệt qua các phần tử trong HashSet
         System.out.println("Các phần tử trong hashSet: ");
         for (Object obj : hashSet) {
             System.out.println(obj);
