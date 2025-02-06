@@ -30,7 +30,10 @@ public class ArrayQueueDemo {
 //        push(E e): Thêm phần tử vào đầu hàng đợi (giống như addFirst).
 //        pop(): Lấy và xóa phần tử từ đầu hàng đợi (giống như removeFirst).
         // Hoạt động như một ngăn xếp
-        deque.push("XYZ");
+        deque.push("Test1");
+        deque.push("Test2");
+        deque.push("Test3");
+
         System.out.println("Deque sau khi push: " + deque);
 
         Object popped = deque.pop();
