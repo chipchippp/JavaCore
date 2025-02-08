@@ -36,6 +36,13 @@ public class Main {
 //        Phương thức hữu ích:
 //        length(), charAt(), substring(), split(), trim(), toLowerCase(), toUpperCase(), replace(), startsWith(), endsWith(), contains().
 
+        int a = 5;
+        Integer b = Integer.valueOf(5);
+        if (a == b) {
+            System.out.println("a == b");
+        } else {
+            System.out.println("a != b");
+        }
 //        Khi nào nên dùng StringBuilder hoặc StringBuffer thay cho String
 //        1. Khi thực hiện nhiều thao tác chỉnh sửa trên chuỗi:
 //        String là immutable (bất biến), nghĩa là mỗi lần chỉnh sửa, Java sẽ tạo một đối tượng mới.
@@ -102,7 +109,7 @@ public class Main {
         String strNotStringPool = new String("hello");
 //        3. use the method format: Method format của lớp String cho phép bạn tạo 1 String mới với định dạng cụ thể. Điều này rất
 //        hữu ích khi bạn cần tạo String phức tạp từ nhiều giá trị khác nhau.
-        String strFormat = String.format("Hello, %$", "world");
+        String strFormat = String.format("Hello, ", "world");
 //        Lưu ý: rằng 2 cách thứ 2 sẽ kh tận dụng đc String pool, điều này có thể dẫn đến việc sử dụng bộ nhớ
 //        kh hiệu quả nếu bạn tạo nhiều String giống nhau.
 
