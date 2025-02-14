@@ -1,30 +1,28 @@
 package JavaReflectionApi_InputAndOutput;
 
-import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Class<?> userClass = User.class;
-        Object obj = userClass.getDeclaredConstructor().newInstance();
+        CheckRoleUser(null);
+    }
 
-        Method method = userClass.getDeclaredMethod("printUser");
-//        method.setAccessible(true);
-//        method.invoke(obj);
-//
-//        Field fieldId = userClass.getDeclaredField("id");
-//        fieldId.setAccessible(true);
-//        fieldId.set(obj, 1);
-//
-//        Field field = userClass.getDeclaredField("name");
-//        field.setAccessible(true);
-//        field.set(obj, "Nguyen Van A");
-//
-//        method.invoke(obj);
-//        System.out.println(obj);
+    private static void CheckRoleUser(Integer userId) {
+        System.out.println("Check role user");
+        UserService userService = new UserServiceImpl();
+        UserInvocationHandler handler = new UserInvocationHandler(userService);
+        UserService proxy = (UserService) Proxy.newProxyInstance(
+                userService.getClass().getClassLoader(),
+                userService.getClass().getInterfaces(),
+                handler
+        );
 
-        if (method.isAnnotationPresent(SampleAnnotation.class)) {
-            SampleAnnotation sampleAnnotation = method.getAnnotation(SampleAnnotation.class);
-            System.out.println(sampleAnnotation.value());
+        if (userId == null) {
+            userId = 0;
+            proxy.getUser(userId);
+        } else {
+            System.out.println(proxy.getUser(userId));
         }
+        proxy.getUser(userId);
     }
 }
