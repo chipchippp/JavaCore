@@ -5,5 +5,10 @@ public class Main {
         Exam exam = new Exam();
         exam.finalMethod();
 
+        Animal animal = new Dog(); // Upcasting (Dog → Animal)
+        animal.makeSound();
+
+        Dog myDog = (Dog) animal; // Downcasting (Animal → Dog)
+        myDog.bark();
     }
 }
