@@ -2,7 +2,7 @@ package Exercise2;
 
 public class Main {
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle();
+//        Rectangle rectangle = new Rectangle();
 
 //        rectangle.getInformation(); // Nhập thông tin hình chữ nhật
 //        rectangle.display(); // Hiển thị thông tin hình chữ nhật
